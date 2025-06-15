@@ -15,8 +15,8 @@ func NewGoodsRepository(conn driver.Conn) *GoodsRepository {
 	return &GoodsRepository{conn: conn}
 }
 
-func (repo *GoodsRepository) InsertGoods(ctx context.Context, rows []domain.Good) error {
-	batch, err := repo.conn.PrepareBatch(ctx, "INSERT INTO goods (Id, ProjectId, Name, Description, Priority, Removed, EventTime) VALUES ($1, $2, $3, $4. $5, $6, $7)")
+func (r *GoodsRepository) InsertGoods(ctx context.Context, rows []domain.Good) error {
+	batch, err := r.conn.PrepareBatch(ctx, "INSERT INTO goods (Id, ProjectId, Name, Description, Priority, Removed, EventTime) VALUES ($1, $2, $3, $4, $5, $6, $7)")
 
 	if err != nil {
 		return err

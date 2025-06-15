@@ -1,10 +1,10 @@
-CREATE TABLE projects (
+CREATE TABLE IF NOT EXISTS projects (
                           id SERIAL PRIMARY KEY,
                           name VARCHAR(255) NOT NULL,
                           created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE goods (
+CREATE TABLE IF NOT EXISTS goods (
                        id SERIAL PRIMARY KEY,
                        project_id INTEGER REFERENCES projects (id),
                        name VARCHAR(255) NOT NULL,
