@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+    image: hezzltest
+    ports:
+      - "3000:3000"
+    networks:
+      - backend-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - "POSTGRES_PASSWORD=password"
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-network
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - backend-network
+
+  nats:
+    image: nats:latest
+    command: "--js"
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    networks:
+      - backend-network
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge

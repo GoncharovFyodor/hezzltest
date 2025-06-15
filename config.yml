@@ -1,0 +1,26 @@
+env: "local"
+
+server:
+  port: ":3000"
+
+db:
+  host: "localhost"
+  port: "5432"
+  user: "postgres"
+  name: "hezzltest"
+  password: "password"
+  ssl_mode: "disable"
+
+redis:
+  host: "localhost:6379"
+  password: ""
+
+nats:
+  host: "localhost:5555"
+  workers_count: 5
+  batch_size: 50
+
+clickhouse:
+  host: "localhost:9000"
+  name: ""
+  password: ""
