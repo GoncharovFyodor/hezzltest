@@ -74,7 +74,7 @@ func (s *Server) UpdateGood(c *gin.Context) {
 
 	if errors.Is(err, sql.ErrNoRows) {
 		c.JSON(http.StatusNotFound, gin.H{
-			"status":  3,
+			"code":    3,
 			"message": "errors.common.notFound",
 			"details": gin.H{},
 		})
@@ -116,7 +116,7 @@ func (s *Server) DeleteGood(c *gin.Context) {
 
 	if errors.Is(err, sql.ErrNoRows) {
 		c.JSON(http.StatusNotFound, gin.H{
-			"status":  3,
+			"code":    3,
 			"message": "errors.common.notFound",
 			"details": gin.H{},
 		})
@@ -192,7 +192,7 @@ func (s *Server) ReprioritizeGood(c *gin.Context) {
 
 	if errors.Is(err, sql.ErrNoRows) {
 		c.JSON(http.StatusNotFound, gin.H{
-			"status":  3,
+			"code":    3,
 			"message": "errors.common.notFound",
 			"details": gin.H{},
 		})

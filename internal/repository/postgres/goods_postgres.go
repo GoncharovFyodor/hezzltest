@@ -114,7 +114,7 @@ func (repo *GoodsPostgres) Update(ctx context.Context, projectID, id int, input 
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			return models.Good{}, fmt.Errorf("товар не найден")
+			return models.Good{}, sql.ErrNoRows
 		}
 		return models.Good{}, fmt.Errorf("не удалось поставить блокировку на чтение записи: %w", err)
 	}
@@ -167,7 +167,7 @@ func (r *GoodsPostgres) Delete(ctx context.Context, projectID, ID int) (models.D
 	)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			return models.DeletedGood{}, err
+			return models.DeletedGood{}, sql.ErrNoRows
 		}
 		return models.DeletedGood{}, fmt.Errorf("не удалось получить товар и совершить блокировку:: %w", err)
 	}
